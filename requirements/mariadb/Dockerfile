@@ -5,7 +5,7 @@ RUN apt-get install -y mariadb-server \
     mariadb-client \
     vim \
 	sudo \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -f /var/lib/apt/lists/* /etc/my.cnf.d/mariadb-server.cnf
 
 #Allow to run the daemon of mysql
 # Purge and re-create /var/lib/mysql with appropriate ownership
@@ -24,14 +24,12 @@ EXPOSE 3306
 #Copy of the .sh and .sql in the /bin of the container to be able to run the program
 # Give the right to execute + launch the .sh
 COPY ./tools/mariadb.sh /usr/local/bin/
-COPY ./conf/wordpress.sql /usr/local/bin/
 COPY ./conf/mysqld.conf /etc/mysql/my.conf
 
 RUN chmod 777 /etc/mysql/my.conf
 RUN chmod +x /usr/local/bin/mariadb.sh
-RUN chmod +x /usr/local/bin/wordpress.sql
 
 ENTRYPOINT [ "/usr/local/bin/mariadb.sh" ]
 
 #Command to launch mariadb and enable the database to listen globally - also can be put on mysqldump.cnf file
-CMD ["mysqld", "--bind-address=0.0.0.0"]
+#CMD ["mysqld", "--bind-address=0.0.0.0"]
