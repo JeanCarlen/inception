@@ -5,7 +5,9 @@ RUN apt-get install -y mariadb-server \
     mariadb-client \
     vim \
 	sudo \
-    && rm -f /var/lib/apt/lists/* /etc/my.cnf.d/mariadb-server.cnf
+    && rm -f /var/lib/apt/lists/* 
+    
+RUN /etc/my.cnf.d/mariadb-server.cnf
 
 #Allow to run the daemon of mysql
 # Purge and re-create /var/lib/mysql with appropriate ownership
