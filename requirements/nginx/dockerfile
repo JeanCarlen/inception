@@ -1,8 +1,8 @@
 FROM debian:buster
 
 #install all the program
-RUN		apt-get install -y nginx
-RUN		apt-get install -y openssl
+RUN		apt install -y nginx
+RUN		apt install -y openssl
 
 RUN mkdir -p /etc/nginx/ssl
 
