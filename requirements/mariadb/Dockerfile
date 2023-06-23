@@ -4,7 +4,6 @@ RUN apt-get update
 RUN apt-get install -y mariadb-server \
     mariadb-client \
     vim \
-	sudo \
     && rm -f /var/lib/apt/lists/* 
     
 RUN /etc/my.cnf.d/mariadb-server.cnf
