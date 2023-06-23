@@ -2,20 +2,21 @@ FROM debian:buster
 
 #install all the program
 RUN		apt-get update
-RUN		apt-get install -y nginx \
-                openssl
+RUN		apt-get install -y nginx
+RUN		apt-get install -y openssl
 
 RUN mkdir -p /etc/nginx/ssl
-RUN mkdir -p /run/nginx
 
 # Generate SSL certificate
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
     -out /etc/nginx/ssl/jcarlen.crt \
     -keyout /etc/nginx/ssl/jcarlen.key \
-    -subj "/C=CH/ST=Lausanne/L=Lausanne/O=42 School/OU=jcarlen/CN=jcarlen/"
+    -subj "/C=FR/ST=Lausanne/L=Lausanne/O=42 School/OU=jcarlen/CN=jcarlen/"
 
 # Copy NGINX configuration
 COPY ./conf/nginx.conf /etc/nginx/conf.d
+
+RUN mkdir -p /run/nginx
 
 # Expose port 443 for HTTPS
 EXPOSE 443
