@@ -38,19 +38,35 @@ services:
     networks:
       - network
 
+#volumes:
+#  mariadb_data:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: /home/jcarlen/data/mysql
+#      o: bind
+#  wordpress_data:
+#    driver: local
+#    driver_opts:
+#      type: none
+#      device: /home/jcarlen/data/wordpress
+#      o: bind
+
 volumes:
   mariadb_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/jcarlen/data/mysql
+      device: /Users/jeancarlen/42_cursus/inception-vm/data/mysql
       o: bind
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /home/jcarlen/data/wordpress
+      device: /Users/jeancarlen/42_cursus/inception-vm/data/wordpress
       o: bind
+
+
 
 networks:
   network:
