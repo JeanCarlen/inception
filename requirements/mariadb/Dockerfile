@@ -3,6 +3,7 @@ FROM debian:buster
 RUN apt-get update
 RUN apt-get install -y mariadb-server
 RUN apt-get install -y mariadb-client
+RUN apt-get install -y netcat-openbsd
     
 RUN rm -rf /etc/my.cnf.d/mariadb-server.cnf
 
@@ -18,9 +19,9 @@ EXPOSE 3306
 #Copy of the .sh and .sql in the /bin of the container to be able to run the program
 # Give the right to execute + launch the .sh
 COPY ./tools/mariadb.sh /usr/local/bin/
-COPY ./conf/mysqld.conf /etc/mysql/my.conf
+COPY ./conf/my.cnf /etc/mysql/my.cnf
 
-RUN chmod +x /etc/mysql/my.conf
+RUN chmod 644 /etc/mysql/my.cnf
 RUN chmod +x /usr/local/bin/mariadb.sh
 
 ENTRYPOINT [ "sh", "/usr/local/bin/mariadb.sh" ]
