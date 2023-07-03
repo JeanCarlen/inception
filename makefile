@@ -1,5 +1,8 @@
 run:
 	@docker compose -f docker-compose.yml up -d --build
+	mkdir data
+	mkdir data/mysql
+	mkdir data/wordpress
 
 down:
 	@docker compose -f docker-compose.yml down

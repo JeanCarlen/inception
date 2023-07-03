@@ -57,13 +57,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/jeancarlen/42_cursus/inception/icp/data/mysql
+      device: /Users/jeancarlen/42_cursus/inception/inception-vm/data/mysql
       o: bind
   wordpress_data:
     driver: local
     driver_opts:
       type: none
-      device: /Users/jeancarlen/42_cursus/inception/icp/data/wordpress
+      device: /Users/jeancarlen/42_cursus/inception/inception-vm/data/wordpress
       o: bind
 
 
